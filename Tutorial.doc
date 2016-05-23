@@ -169,5 +169,6 @@ $ npm start
 
 simple version
 
-git remote add origin [path]
-git push -u origin master
+git add -a
+git commit -m “tag commit"
+git push origin master
