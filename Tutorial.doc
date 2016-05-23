@@ -1,0 +1,173 @@
+23 May 2016
+
+Version 1.0 by YY
+
+
+
+React Setup / Startup Models
+
+Preparation:  NodeJS installed and with internet connection
+
+
+1. Github Setup
+
+1.a Create a new repository
+
+sample: repository name: “react-skeleton”
+
+1.b In terminal create the test folder.
+
+sample: mkdir react-skeleton
+
+1.c make sure under the react-skeleton folder
+
+(tips: ls, command+ k)
+
+1.d initialized empty Git repository
+
+sample:$  git init
+
+1.f mapping the path to github (copy the path)
+
+sample: $ git remote add origin [path]
+
+
+1.g from now, the instructions are used to push the local folder to github depository 
+
+sample:$  touch README.md
+
+1.h $ git add -A
+
+1.i  $ git commit -m “initial commit” (commit the file)
+
+1.j $ git push origin master (upload the files to github)
+
+
+
+2. Install Packages. Open Editor (Adam preferable, install language-babel package)
+
+
+
+
+
+2.a setup the basic files structure
+
+./README.md
+
+file1: ./public/index.html
+file2: ./src
+
+
+
+
+2.b setup the working environments
+
+2.b.1 Important!
+
+under development folder,
+
+$ npm init
+
+then click enter to every  question until yes
+
+create package.json
+
+2.b.2 Global Install browserify
+
+$ (Sudo) npm install -g browserify
+
+install once is enough
+
+2.b.3  local install , node project has dependency on babelify
+
+$  npm install [dash][dash]save babelify
+
+2.b.4  local install , 
+
+$ npm install [dash][dash]save watchify
+
+2.b.5  local install , realtime change view, compiling from jsx to js 
+
+$ npm install [dash][dash]save babel-preset-react
+
+2.b.6  local install , react
+
+$ npm install [dash][dash]save react
+
+above declares dependency in json file and download the modules 
+
+2.b.7  local install , react-dom
+
+$ npm instal [dash][dash]save react-dom
+
+
+3. Setup Basic Files 
+
+./README.md
+./package.json
+
+file1: ./public/index.html
+file2: ./src
+file3: ./node_modules
+
+3.1 below setting up new files:
+
+file4: ./src/main.jsx (entry-point of the application)
+file5: ./src/components/Test.jsx (first Capital means component name = function name = file name)
+file6: ./public/main.js
+
+3.2 index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CommonJS React Skeleton</title>
+    </head>
+    <body>
+   
+        <div id="test"> 
+        </div>
+    <script src="js/main.js"></script>
+    </body>
+</html>
+
+3.3 Test.jsx
+
+var React = require('react');
+var Test = React.createClass({
+    render: function() {
+        return (
+          <h1> This is the test </h1>
+        );
+    }
+});
+
+module.exports = Test;
+
+
+3.4 main.jsx
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Test = require('./components/Test.jsx');
+
+ReactDOM.render(<Test />, document.getElementById('test'));
+
+/*render what to which id in html body*/
+
+3.5 package.json
+
+under “scripts”, add below
+
+"start": "watchify src/main.jsx -v -t [ babelify --presets [ react ] ] -o public/js/main.js",
+
+3.6 under dev folder run
+
+$ npm start
+
+4 Run the githut upload, upload your startup models
+
+simple version
+
+git remote add origin [path]
+git push -u origin master
